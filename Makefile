@@ -5,11 +5,11 @@ PIP_HOME = $(shell python3 -c "import site; import os; print(os.path.join(site.U
 
 .PHONY: dev
 dev:
-	pipenv run python ./manage.py runserver $(DEV_LISTEN_IP):$(DEV_PORT)
+	HKNWEB_MODE='dev' pipenv run python ./manage.py runserver $(DEV_LISTEN_IP):$(DEV_PORT)
 
 .PHONY: dev-vagrant
 dev-vagrant:
-	pipenv run python ./manage.py runserver [::]:$(DEV_PORT)
+	HKNWEB_MODE='dev' pipenv run python ./manage.py runserver [::]:$(DEV_PORT)
 
 .PHONY: livereload
 livereload:
