@@ -50,3 +50,4 @@ target/
 /keyrings/live/pubring.kbx~
 /keyrings/live/secring.gpg
 /bbtest.txt
+/hknweb/settings/secrets.py
