@@ -1,1 +1,2 @@
 hutch@hkn.eecs.berkeley.edu
+jvperrin@hkn.eecs.berkeley.edu
