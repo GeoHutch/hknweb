@@ -29,7 +29,7 @@ venv: Pipfile Pipfile.lock
 
 .PHONY: migrate
 migrate:
-	pipenv run python ./manage.py migrate
+	pipenv run python ./manage.py migrate --settings=hknweb.settings.dev
 
 .PHONY: test
 test: venv
