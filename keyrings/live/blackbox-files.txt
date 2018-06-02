@@ -1,2 +1,3 @@
 bbtest.txt
+hknweb/settings/oauth_secrets.json
 hknweb/settings/secrets.py

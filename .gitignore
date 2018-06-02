@@ -51,3 +51,4 @@ target/
 /keyrings/live/secring.gpg
 /bbtest.txt
 /hknweb/settings/secrets.py
+/hknweb/settings/oauth_secrets.json
