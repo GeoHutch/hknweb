@@ -1,6 +1,6 @@
 from django import forms
-from hknweb.models import User
-from hknweb.models import Profile
+from hknweb.users.models import CustomUser
+from hknweb.users.models import CustomUserProfile
 
 class SettingsForm(forms.ModelForm):
 
