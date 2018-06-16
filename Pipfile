@@ -17,6 +17,8 @@ mysqlclient = "*"
 livereload = "*"
 whitenoise = "*"
 pillow = "*"
+django-allauth = "*"
+django-allauth-cas = "*"
 
 
 [dev-packages]

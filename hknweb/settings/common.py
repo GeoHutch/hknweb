@@ -20,15 +20,23 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # Application definition
 
 INSTALLED_APPS = [
-    'hknweb',
-    'hknweb.events',
-    'django.contrib.admin',
+   'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'livereload',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+    'hknweb',
+    'hknweb.events',
+
 ]
 
 MIDDLEWARE = [
@@ -94,6 +102,24 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+        'allauth.accounts.auth_backends.AuthenticationBackend',
+
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+        'google':
+            { 'SCOPE': ['profile', 'email'],
+              'AUTH_PARAMS': { 'access_type': 'online' },
+        },
+}
+
+SITE_ID = 1
+AUTH_USER_MODEL='auth.User'
+LOGIN_REDIRECT_URL = '/events/'
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = True
 
 
 # Internationalization

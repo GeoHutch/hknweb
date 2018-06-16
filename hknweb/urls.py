@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.urls import include, path
 from django.contrib import admin
-from django.contrib.auth.views import login, logout
+# from django.contrib.auth.views import login, logout
 import hknweb.views as views
 
 urlpatterns = [
@@ -24,7 +24,9 @@ urlpatterns = [
     path('accounts/', include([
         path('profile/', views.account_settings),
         path('settings/', views.account_settings),
-        path('login/', login, {'template_name': 'admin/login.html'}),
-        path('logout/', logout),
-    ]))
+#        path('login/', login, {'template_name': 'admin/login.html'}),
+#        path('logout/', logout),
+    ])),
+    path('auth/', include('allauth.urls')),
+#    path('login/', allauth.views.login),
 ]
