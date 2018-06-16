@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
     'hknweb',
     'hknweb.events',
+    'hknweb.users',
 
 ]
 
@@ -116,7 +117,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 SITE_ID = 1
-AUTH_USER_MODEL='auth.User'
+AUTH_USER_MODEL='users.CustomUser'
 LOGIN_REDIRECT_URL = '/events/'
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_REQUIRED = True
