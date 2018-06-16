@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
-from hknweb.models import Profile
+from hknweb.users.models import CustomUserProfile as Profile
 # import ast
 from django.contrib.auth.models import User
 from hknweb.forms import SettingsForm, ProfileForm

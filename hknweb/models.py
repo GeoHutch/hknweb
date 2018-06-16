@@ -5,8 +5,10 @@ from django.dispatch import receiver
 import re
 from django.core.validators import RegexValidator
 
+import hknweb.settings
+"""
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
+    user = models.OneToOneField(hknweb.settings.AUTH_USER_MODEL, on_delete=models.CASCADE, editable=False)
     date_of_birth = models.DateField(null=True, blank=True)
     picture = models.ImageField(blank=True)
     private = models.BooleanField(default=True, verbose_name="Private profile?")
@@ -28,3 +30,4 @@ class Profile(models.Model):
         if self.phone_number:
             self.phone_number = re.sub("[^0-9]", "",self.phone_number)
             self.phone_number = "("+self.phone_number[0:3]+") "+self.phone_number[3:6]+"-"+self.phone_number[6:]
+"""
