@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser, UserManager
+from django.contrib.auth.models import AbstractUser, AbstractBaseUser, UserManager, PermissionsMixin
 from django.core.validators import RegexValidator
 from django.db import models
 from django.db.models.signals import post_save
@@ -22,7 +22,9 @@ class CustomUserManager(UserManager):
     pass
 
 class CustomUser(AbstractUser):
-    username = models.CharField(blank=True, max_length=255, unique=True)
+#    username = models.CharField(_('username'), blank=False, max_length=40, unique=True)
+#    email = models.EmailField(_('email'), blank=False, unique=True, max_length=40)
+
     first_name = models.CharField(_('first name'), max_length=40, blank=True, null=True, unique=False)
     last_name = models.CharField(_('last name'), max_length=40, blank=True, null=True, unique=False)
     display_name = models.CharField(_('display name'), max_length=14, blank=True, null=True, unique=False)
@@ -31,14 +33,17 @@ class CustomUser(AbstractUser):
     is_active = models.BooleanField(_('active'), default=True,
                                     help_text=_('Designates whether this user should be treated as '
                                                 'active. Unselect this instead of deleting accounts.'))
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+#    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
     objects = CustomUserManager()
+
+    USERNAME_FIELD='username'
+    REQUIRED_FIELDS=['email']
 
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
-        db_table = 'auth_user'
+        db_table = 'users'
         abstract = False
 
     def __str__(self):
@@ -63,9 +68,9 @@ class CustomUserProfile(models.Model):
 #        if created:
 #            Profile.objects.create(user=instance)
 
-    @receiver(post_save, sender=CustomUser)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+#    @receiver(post_save, sender=CustomUser)
+#    def save_user_profile(sender, instance, **kwargs):
+#        instance.profile.save()
 
     def clean(self):
         if self.phone_number:
@@ -73,7 +78,7 @@ class CustomUserProfile(models.Model):
             self.phone_number = "("+self.phone_number[0:3]+") "+self.phone_number[3:6]+"-"+self.phone_number[6:]
 
 @receiver(user_signed_up)
-def set_initial_user_names(request, user, sociallogin=None, **kwargs):
+def set_initial_user_info(request, user, sociallogin=None, **kwargs):
 
     if sociallogin:
         if sociallogin.account.provider == 'google':
