@@ -1,17 +1,12 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = 'pypi'
 
-
 [requires]
-
 python_version = "3"
 
-
 [packages]
-
 django = ">=2.0"
 mysqlclient = "*"
 livereload = "*"
@@ -20,9 +15,10 @@ pillow = "*"
 django-allauth = "*"
 django-allauth-cas = "*"
 
-
 [dev-packages]
-
 pre-commit = "*"
 pytest = "*"
 pytest-django = "*"
+
+[pipenv]
+allow_prereleases = true
