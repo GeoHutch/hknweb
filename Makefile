@@ -13,7 +13,7 @@ dev-vagrant:
 
 .PHONY: livereload
 livereload:
-	pipenv run python ./manage.py livereload $(DEV_LISTEN_IP):$(DEV_PORT)
+	HKNWEB_MODE='dev' pipenv run python ./manage.py livereload $(DEV_LISTEN_IP):$(DEV_PORT)
 
 
 setup: pipenv venv migrate
@@ -25,11 +25,11 @@ pipenv:
 
 .PHONY: venv
 venv: Pipfile Pipfile.lock
-	pipenv install --dev
+	pipenv install --dev --pre
 
 .PHONY: migrate
 migrate:
-	pipenv run python ./manage.py migrate --settings=hknweb.settings.dev
+	HKNWEB_MODE='dev' pipenv run python ./manage.py migrate --settings=hknweb.settings.dev
 
 .PHONY: test
 test: venv
