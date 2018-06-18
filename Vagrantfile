@@ -89,10 +89,11 @@ Vagrant.configure("2") do |config|
         python3-dev \
         python3-pip \
         tmux \
-        vim
+        vim \
+        jq
 
     # Set up MySQL database and development user
-    mysql -e "CREATE DATABASE IF NOT EXISTS hkn;"
+    mysql -e "CREATE DATABASE IF NOT EXISTS hkn DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;"
     mysql -e "GRANT ALL PRIVILEGES ON hkn.* TO 'hkn'@'localhost' IDENTIFIED BY 'hknweb-dev';"
 
     # Setup pipenv and virtualenv
