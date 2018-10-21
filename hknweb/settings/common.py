@@ -22,12 +22,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 INSTALLED_APPS = [
     'hknweb',
     'hknweb.events',
+    'hknweb.markdown_pages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'markdownx',
     'livereload',
 ]
 

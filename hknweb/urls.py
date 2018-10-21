@@ -30,5 +30,7 @@ urlpatterns = [
             path('logout/', auth_views.LogoutView.as_view()),
         ]),
     ),
+    path(r'pages/', include('hknweb.markdown_pages.urls')),
+    path(r'markdownx/', include('markdownx.urls')),
     path('events/', include('hknweb.events.urls')),
 ]
