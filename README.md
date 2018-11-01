@@ -67,7 +67,8 @@ On Linux, this is `~/.local/bin`, and on Windows, this is `AppData\Roaming\Pytho
 $ echo "export PATH="$PATH:$HOME/.local/bin" >> .bashrc
 ```
 
-Django will also require a working copy of MySQL (or MariaDB).
+Django will also require a working copy of MySQL/MariaDB to run in staging or production.
+[SQLite3](https://sqlite.org/index.html) is the default for devel.
 
 ## Development
 
